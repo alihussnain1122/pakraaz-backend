@@ -26,7 +26,6 @@ conn.once('open', () => {
 
 exports.loginCommission = async (req, res) => {
   const { username, password } = req.body;
-  console.log("Checking login for:", username);
 
   try {
     const commission = await Commission.findOne({ username });
@@ -49,7 +48,6 @@ exports.loginCommission = async (req, res) => {
     });
 
   } catch (error) {
-    console.error("❌ Error in loginCommission:", error);
     return res.status(500).json({ message: 'Server error during commission login' });
   }
 };
@@ -85,7 +83,6 @@ exports.getAllAdmins = async (req, res) => {
 };
 
 exports.createAdmin = async (req, res) => {
-  console.log('📥 Received admin data:', req.body);
   try {
     const { username, password, city } = req.body;
     
@@ -98,7 +95,6 @@ exports.createAdmin = async (req, res) => {
     await newAdmin.save();
     res.status(201).json({ message: 'Admin created successfully!' });
   } catch (error) {
-    console.error('❌ Error creating admin:', error);
     res.status(500).json({ message: 'Server error while creating admin.' });
   }
 };
@@ -111,10 +107,6 @@ exports.updateAdmin = async (req, res) => {
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(400).json({ message: 'Invalid admin ID format' });
     }
-
-    // ✅ Log incoming data for debugging
-    console.log('📥 Update request for admin ID:', id);
-    console.log('📦 Request body:', req.body);
 
     // ✅ Perform update
     const updated = await Admin.findByIdAndUpdate(id, req.body, { new: true });
@@ -190,10 +182,6 @@ exports.registerAdmin = async (req, res) => {
 
 // Register Voter by Commission
 exports.registerVoter = async (req, res) => {
-  console.log("Shayan checking")
-
-  console.log("Request Body: ", req.body);  // Log the body to check the incoming data
-
   const { cnic, voterID, name, phone, city } = req.body;
 
   // Validate that all required fields are present
