@@ -57,10 +57,9 @@ app.get('/', (req, res) => {
 app.use('/api', adminRoutes);
 app.use('/api',voterRoutes);
 app.use('/api/voter', voterRoutes);
-app.use('/api/auth', authRoutes);
+app.use('/api', authRoutes);
 app.post('/api/admin/login', adminController.loginAdmin);
 app.post('/api/voter/login', loginVoter);
-app.post('/api/commission/login', loginCommission);
 app.use('/api/candidates', candidateRoutes);
 app.use('/api/voters', voterRoutes);
 app.use('/api/feedback', feedbackRoutes);
