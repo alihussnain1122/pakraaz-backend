@@ -5,7 +5,6 @@ const jwt = require('jsonwebtoken');
 const Commission = require('../models/Commission');  // Commission model
 const Admin = require('../models/Admin');            // Admin model
 const Voter = require('../models/Voter');            // Voter model
-const bodyParser = require('body-parser');
 const crypto = require('crypto');
 const path = require('path');
 const Grid = require('gridfs-stream');

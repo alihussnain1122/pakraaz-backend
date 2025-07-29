@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const  morgan = require('morgan');
 const cors = require('cors');
-const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const app = express();
 const adminController = require('./controllers/adminController')
@@ -34,7 +33,6 @@ const authRoutes = require('./routes/auth');
 dotenv.config();
 
 // === MIDDLEWARE ===
-app.use(bodyParser.json());
 app.use(cors());
 
 // Logging
@@ -106,5 +104,5 @@ app.use((req, res) => {
 // === SERVER START ===
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`🚀 HTTPS Server running on port ${PORT}`);
+  console.log(`🚀 Server running on port ${PORT}`);
 });
